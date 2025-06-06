@@ -31,28 +31,45 @@
     <body
         class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
         
-        <!-- Tombol Toggle Mode -->
-        <div class="fixed top-5 right-5 z-50">
-            <button
-                id="toggleDark"
-                class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700 transition">
-                Toggle Mode
-            </button>
-        </div>
-
-        <!-- Navbar -->
         <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
                 <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
                     Yehezkiel Gultom
                 </h1>
-                <nav class="space-x-6">
-                    <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400">Tentang</a >
-                    <a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a >
-                    <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Kontak</a >
+
+                <!-- Hamburger Button -->
+                <button id="menuToggle" class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Navigation Menu (Desktop) -->
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400">Tentang</a>
+                    <!-- <a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a> -->
+                    <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Kontak</a>
+                    <!-- Tombol Toggle Mode (versi desktop) -->
+                    <button id="toggleDarkDesktop" class="text-xl transition hover:text-indigo-600 dark:hover:text-indigo-400">
+                        🌞
+                    </button>
                 </nav>
             </div>
+
+            <!-- Navigation Menu (Mobile Dropdown) -->
+            <div id="navMenu" class="md:hidden hidden flex-col space-y-4 px-4 py-4 bg-white dark:bg-gray-800 border-t dark:border-gray-700 shadow">
+                <a href="#about" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Tentang</a>
+                <!-- <a href="#portfolio" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a> -->
+                <a href="#contact" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Kontak</a>
+                <!-- Toggle Mode Button -->
+                <button id="toggleDark" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700 transition">
+                    Toggle Mode
+                </button>
+            </div>
         </header>
+
 
         <!-- Hero Section -->
         <section class="bg-indigo-600 text-white py-20">
@@ -60,15 +77,21 @@
                 <div>
                     <h2 class="text-4xl font-bold mb-4">Halo, Saya Yehezkiel Gultom</h2>
                     <p class="text-lg mb-6">
-                        Web Developer | UI/UX Designer | Freelancer
+                        Web Developer | Freelancer
                     </p>
                     <a
-                        href="#contact"
-                        class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">Hubungi Saya</a >
+                        href="https://wa.me/6282179480009?text=Halo%20Yehezkiel,%20saya%20tertarik%20dengan%20jasa%20Anda"
+                        target="_blank"
+                        class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition">
+                        Hubungi Saya
+                    </a>
+                    <div class="bg-red-300 my-8">
+                        <!-- <a href="" class="mx-auto my-8 ">test</a> -->
+                    </div>
                 </div>
                 <div class="text-center">
                     <img
-                        src="img/me.png"
+                        src="img/mee.png"
                         alt="Hero Image"
                         class="rounded-lg shadow-lg hover:scale-105 transition duration-300 w-full max-w-sm mx-auto"/>
                 </div>
@@ -80,15 +103,17 @@
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <h3 class="text-3xl font-semibold mb-4">Tentang Saya</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-lg">
-                    Saya adalah pengembang web yang berdedikasi untuk membangun solusi digital yang
-                    elegan dan fungsional. Mengutamakan performa, desain modern, dan pengalaman
-                    pengguna terbaik.
+                    Saya adalah seorang <strong>programmer Laravel</strong> yang berdedikasi untuk menjadi <strong>Fullstack Laravel Developer</strong> dengan fokus utama pada pengembangan aplikasi berbasis web yang modern, aman, dan efisien. 
+                    <br><br>
+                    Di luar pengembangan sistem, saya juga aktif sebagai <strong>konten kreator</strong> yang membagikan berbagai pengetahuan, tutorial, dan insight seputar dunia pemrograman, khususnya Laravel dan ekosistem web development. 
+                    <br><br>
+                    Bagi saya, teknologi bukan hanya alat, tetapi juga sarana untuk memberikan dampak positif dan solusi nyata melalui karya digital.
                 </p>
             </div>
         </section>
 
         <!-- Portofolio -->
-        <section id="portfolio" class="py-20 bg-gray-100 dark:bg-gray-900">
+        <!-- <section id="portfolio" class="py-20 bg-gray-100 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
                 <h3 class="text-3xl font-semibold text-center mb-10">Portofolio</h3>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -133,7 +158,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Kontak -->
         <section id="contact" class="py-20 bg-white dark:bg-gray-800">
@@ -167,18 +192,49 @@
         <!-- Footer -->
         <footer
             class="bg-gray-100 dark:bg-gray-900 py-6 text-center text-gray-600 dark:text-gray-400">
-            &copy; 2025 Nama Anda. All rights reserved.
+            &copy; 2025 Yehezkiel Gultom. All rights reserved.
         </footer>
 
         <!-- Script Toggle -->
         <script>
-            const toggle = document.getElementById("toggleDark");
             const html = document.documentElement;
-            toggle.addEventListener("click", () => {
-                html
-                    .classList
-                    .toggle("dark");
+            const toggleMobile = document.getElementById("toggleDark");
+            const toggleDesktop = document.getElementById("toggleDarkDesktop");
+            const menuToggle = document.getElementById("menuToggle");
+            const navMenu = document.getElementById("navMenu");
+
+            // Fungsi toggle dark/light
+            function toggleTheme() {
+                html.classList.toggle("dark");
+                updateIcon();
+            }
+
+            // Update icon sesuai mode
+            function updateIcon() {
+                const isDark = html.classList.contains("dark");
+                if (toggleDesktop) toggleDesktop.textContent = isDark ? "🌙" : "🌞";
+                if (toggleMobile) toggleMobile.textContent = isDark ? "🌙" : "🌞";
+            }
+
+            // Event listener
+            if (toggleDesktop) toggleDesktop.addEventListener("click", toggleTheme);
+            if (toggleMobile) toggleMobile.addEventListener("click", toggleTheme);
+            if (menuToggle) {
+                menuToggle.addEventListener("click", () => {
+                    navMenu.classList.toggle("hidden");
+                });
+            }
+
+            // Tutup menu mobile setelah klik link
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                });
             });
+
+            // Set ikon awal saat halaman dibuka
+            updateIcon();
         </script>
+
     </body>
 </html>
