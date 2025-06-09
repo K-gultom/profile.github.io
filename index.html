@@ -49,7 +49,7 @@
                 <!-- Navigation Menu (Desktop) -->
                 <nav class="hidden md:flex space-x-6 items-center">
                     <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400">Tentang</a>
-                    <!-- <a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a> -->
+                    <a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a>
                     <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Kontak</a>
                     <!-- Tombol Toggle Mode (versi desktop) -->
                     <button id="toggleDarkDesktop" class="text-xl transition hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -61,7 +61,7 @@
             <!-- Navigation Menu (Mobile Dropdown) -->
             <div id="navMenu" class="md:hidden hidden flex-col space-y-4 px-4 py-4 bg-white dark:bg-gray-800 border-t dark:border-gray-700 shadow">
                 <a href="#about" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Tentang</a>
-                <!-- <a href="#portfolio" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a> -->
+                <a href="#portfolio" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Portofolio</a>
                 <a href="#contact" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Kontak</a>
                 <!-- Toggle Mode Button -->
                 <button id="toggleDark" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700 transition">
@@ -113,7 +113,7 @@
         </section>
 
         <!-- Portofolio -->
-        <!-- <section id="portfolio" class="py-20 bg-gray-100 dark:bg-gray-900">
+        <section id="portfolio" class="py-20 bg-gray-100 dark:bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
                 <h3 class="text-3xl font-semibold text-center mb-10">Portofolio</h3>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -124,10 +124,14 @@
                             alt="Project 1"
                             class="w-full"/>
                         <div class="p-5">
-                            <h4 class="text-xl font-bold mb-2">Website Company</h4>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                Desain dan pengembangan website modern untuk perusahaan.
+                            <h4 class="text-xl font-bold mb-2">CamEfect</h4>
+                            <p class="text-gray-600 dark:text-gray-300 mb-5">
+                                Aplikasi Effect Virtual
                             </p>
+                            <a href="https://k-gultom.github.io/camefect.github.io/" target="_blank"
+                                class="w-100 bg-indigo-600 text-white p-2 font-semibold rounded-md hover:bg-indigo-700">
+                                See more
+                            </a>
                         </div>
                     </div>
                     <div
@@ -158,7 +162,7 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
 
         <!-- Kontak -->
         <section id="contact" class="py-20 bg-white dark:bg-gray-800">
@@ -167,27 +171,24 @@
                 <p class="text-gray-600 dark:text-gray-300 mb-6">
                     Kirim pesan jika ingin bekerja sama atau sekadar menyapa.
                 </p>
-                <form class="space-y-4">
-                    <input
-                        type="text"
-                        placeholder="Nama Anda"
-                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"/>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"/>
-                    <textarea
-                        placeholder="Pesan"
-                        rows="5"
-                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"></textarea>
-                    <button
-                        type="submit"
+                <form class="space-y-4" onsubmit="sendToWhatsApp(event)">
+                    <input id="nama" type="text" placeholder="Nama Anda"
+                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" required />
+
+                    <input id="email" type="email" placeholder="Email"
+                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" required />
+
+                    <textarea id="pesan" placeholder="Pesan" rows="5"
+                        class="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" required></textarea>
+
+                    <button type="submit"
                         class="w-full bg-indigo-600 text-white py-3 font-semibold rounded-md hover:bg-indigo-700">
                         Kirim
                     </button>
                 </form>
             </div>
         </section>
+
 
         <!-- Footer -->
         <footer
@@ -234,6 +235,26 @@
 
             // Set ikon awal saat halaman dibuka
             updateIcon();
+
+
+            function sendToWhatsApp(event) {
+                event.preventDefault();
+
+                const nama = document.getElementById("nama").value;
+                const email = document.getElementById("email").value;
+                const pesan = document.getElementById("pesan").value;
+
+                const noWA = "6282179480009"; // Ganti dengan nomor WA kamu tanpa +
+                const text = `Halo, saya ${nama}.\nEmail: ${email}\nPesan: ${pesan}`;
+                const encodedText = encodeURIComponent(text);
+                const url = `https://wa.me/${noWA}?text=${encodedText}`;
+
+                window.open(url, '_blank');
+
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            }
         </script>
 
     </body>
